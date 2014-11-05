@@ -1,0 +1,2 @@
+module ConfroomsHelper
+end

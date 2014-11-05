@@ -1,0 +1,23 @@
+<h1>Listing conferencerms</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @conferencerms.each do |conferencerm| %>
+  <tr>
+    <td><%= conferencerm.number %></td>
+    <td><%= link_to 'Show', conferencerm %></td>
+    <td><%= link_to 'Edit', edit_conferencerm_path(conferencerm) %></td>
+    <td><%= link_to 'Destroy', conferencerm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Conferencerm', new_conferencerm_path %>

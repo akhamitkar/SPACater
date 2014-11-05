@@ -1,0 +1,52 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:date_of_delivery) %></th>
+      <th><%= model_class.human_attribute_name(:no_of_people) %></th>
+      <th><%= model_class.human_attribute_name(:food_allergies) %></th>
+      <th><%= model_class.human_attribute_name(:special_requests) %></th>
+      <th><%= model_class.human_attribute_name(:credit_card) %></th>
+      <th><%= model_class.human_attribute_name(:dept_name) %></th>
+      <th><%= model_class.human_attribute_name(:confroom_name) %></th>
+      <th><%= model_class.human_attribute_name(:caterer_name) %></th>
+      <th><%#= model_class.human_attribute_name(:created_at) %></th>
+      <th><%#=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, order_path(order) %></td>
+        <td><%= order.name %></td>
+        <td><%= order.date_of_delivery %></td>
+        <td><%= order.no_of_people %></td>
+        <td><%= order.food_allergies %></td>
+        <td><%= order.special_requests %></td>
+        <td><%= order.credit_card %></td>
+        <td><%= Dept.find(order.dept_id).dept_name %></td>
+        <td><%= Confroom.find(order.confroom_id).conf_room %></td>
+        <td><%= Caterer.find(order.caterer_id).caterer_name %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_order_path(order), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      order_path(order),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_order_path,
+            :class => 'btn btn-primary' %>

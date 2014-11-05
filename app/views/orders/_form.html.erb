@@ -1,0 +1,66 @@
+<%= form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_of_delivery, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_delivery, :class => 'datetime_select' %>
+      <%#= f.text_field :date_of_delivery %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :no_of_people, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :no_of_people, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :food_allergies, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :food_allergies, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :special_requests, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :special_requests, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :credit_card, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :credit_card, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :dept_id, :class => 'control-label' %>
+    <div class="controls">
+      <%#= f.number_field :dept_id, :class => 'number_field' %>
+      <%= collection_select(:order, :dept_id, @depts, :id, :dept_name, {:prompt => false}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :confroom_id, :class => 'control-label' %>
+    <div class="controls">
+      <%#= f.number_field :confroom_id, :class => 'number_field' %>
+      <%= collection_select(:order, :confroom_id, @confrooms, :id, :conf_room, {:prompt => false}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :caterer_id, :class => 'control-label' %>
+    <div class="controls">
+      <%#= f.number_field :caterer_id, :class => 'number_field' %>
+      <%= collection_select(:order, :caterer_id, @caterers, :id, :caterer_name, {:prompt => false}) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                orders_path, :class => 'btn' %>
+  </div>
+<% end %>

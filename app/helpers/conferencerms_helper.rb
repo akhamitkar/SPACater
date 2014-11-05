@@ -1,0 +1,2 @@
+module ConferencermsHelper
+end

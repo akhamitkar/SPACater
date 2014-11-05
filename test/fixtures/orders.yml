@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  date_of_delivery: 2014-09-29 12:34:14
+  no_of_people: 1
+  food_allergies: MyString
+  special_requests: MyString
+  credit_card: MyString
+
+two:
+  name: MyString
+  date_of_delivery: 2014-09-29 12:34:14
+  no_of_people: 1
+  food_allergies: MyString
+  special_requests: MyString
+  credit_card: MyString

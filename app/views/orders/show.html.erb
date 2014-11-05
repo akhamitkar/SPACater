@@ -1,0 +1,37 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @order.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:date_of_delivery) %>:</strong></dt>
+  <dd><%= @order.date_of_delivery %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:no_of_people) %>:</strong></dt>
+  <dd><%= @order.no_of_people %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:food_allergies) %>:</strong></dt>
+  <dd><%= @order.food_allergies %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:special_requests) %>:</strong></dt>
+  <dd><%= @order.special_requests %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:credit_card) %>:</strong></dt>
+  <dd><%= @order.credit_card %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dept_id) %>:</strong></dt>
+  <dd><%= @order.dept_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:confroom_id) %>:</strong></dt>
+  <dd><%= @order.confroom_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:caterer_id) %>:</strong></dt>
+  <dd><%= @order.caterer_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              orders_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_order_path(@order), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
