@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html ng-app="caterorder">
-<button ng-click="count = count + 1" ng-init="count=0">
-  Increment
-</button>
-{{count}}<br>
-{{"Hello World"}}
-</html>
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:date_of_delivery) %></th>
+      <th><%= model_class.human_attribute_name(:no_of_people) %></th>
+      <th><%= model_class.human_attribute_name(:food_allergies) %></th>
+      <th><%= model_class.human_attribute_name(:special_requests) %></th>
+      <th><%= model_class.human_attribute_name(:credit_card) %></th>
+      <th><%= model_class.human_attribute_name(:dept_name) %></th>
+      <th><%= model_class.human_attribute_name(:confroom_name) %></th>
+      <th><%= model_class.human_attribute_name(:caterer_name) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+<tbody ng-controller="OrderJsonCtrl as joc">
+<tr ng-repeat="order in joc.orders"> 
+	<td>{{ order.name }} </td>
+	<td>{{ order.date_of_delivery | date}}</td>
+        <td>{{ order.no_of_people }}</td>
+        <td>{{ order.food_allergies }}</td>
+        <td>{{ order.special_requests }}</td>
+        <td>{{ order.credit_card }}</td>
+	<%= {{order.id}} %>
+</tbody>
+</table>
+
 
