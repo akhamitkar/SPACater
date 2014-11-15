@@ -3,23 +3,32 @@
 <head>
  </head>
 <body ng-controller="DeptController as d"> 
- <table class="table">
+<br/>
+<br/>
+ <table class="table table-striped table-bordered ">
     <thead>
-      <tr>
+      
         <th>Dept Name</th>
-      </tr>
+      
     </thead>
       <tbody>
       <tr ng-repeat="dept in d.depts">
         <td>{{dept.dept_name}}</td>
-	<td><button ng-click="action=Edit">Edit</button></td>{{action}}   
-	<td><button ng-click="action=Delete">Delete</button></td>
+	<td><button ng-init="row=0" ng-click="action=2">Edit</button> 
+<div ng-show="action==2">
+ <blockquote>
+  <form name="deptForm" ng-submit="d.editDept(dept)">
+	<input type="hidden" ng-model="dept.id">
+        <input type="text" ng-model="dept.dept_name">
+	<input type="submit" value="Submit" />
+  </form>
+ </blockquote>
+ </div></td>  
+	<td><button ng-click="d.deleteDept(dept.id)">Delete</button></td>
       </tr>
     </tbody>
  </table>
- <blockquote ng-show="action=Edit">
-  Edit Form
- </blockquote>
+
  <blockquote>
   Add Dept
     <form name="deptForm"  ng-submit="d.addDept(dept)">
