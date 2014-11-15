@@ -3,6 +3,7 @@ var app = angular.module('caterorder', []);
 app.controller('DeptController', ['$http',function($http) {
   var caterorder = this;
    caterorder.depts = [];
+   caterorder.dept = {};
   $http.get('/depts.json').success(function(data){
     caterorder.depts=data;  
 	}); // http get close
@@ -13,7 +14,7 @@ app.controller('DeptController', ['$http',function($http) {
   $http.post('/depts.json',{dept}); // Next line is interesting.
   $http.get('/depts.json').success(function(data){ // We load depts again to reflect row add 
     caterorder.depts=data;  
-  this.dept={};
+  caterorder.dept={};
    });
   }; // addDept close
  
